@@ -1,0 +1,40 @@
+# CODEOWNERS
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+*       {{default-owners}}
+
+# Documentation
+/docs/          {{docs-owners}}
+*.md            {{docs-owners}}
+
+# Configuration files
+/.github/       {{maintainers}}
+
+# Source code by directory
+# /src/          {{src-owners}}
+# /lib/          {{lib-owners}}
+# /pkg/          {{pkg-owners}}
+
+# Language-specific patterns
+# *.py           {{python-owners}}
+# *.js           {{js-owners}}
+# *.ts           {{ts-owners}}
+# *.go           {{go-owners}}
+# *.rs           {{rust-owners}}
+
+# Tests
+# /tests/        {{test-owners}}
+# /test/         {{test-owners}}
+# *_test.go      {{test-owners}}
+# *_test.py      {{test-owners}}
+
+# Infrastructure
+# /deploy/       {{infra-owners}}
+# /terraform/    {{infra-owners}}
+# Dockerfile     {{infra-owners}}
+# docker-compose*.yml {{infra-owners}}
+
+# Security-sensitive files
+# /security/     {{security-owners}}
+# SECURITY.md    {{security-owners}}

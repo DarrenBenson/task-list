@@ -1,0 +1,25 @@
+# Funding options for this project
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/displaying-a-sponsor-button-in-your-repository
+
+# GitHub Sponsors username
+github: {{github-sponsors-username}}
+
+# Patreon username
+# patreon: {{patreon-username}}
+
+# Open Collective username
+# open_collective: {{open-collective-username}}
+
+# Ko-fi username
+# ko_fi: {{ko-fi-username}}
+
+# Buy Me a Coffee username
+# buy_me_a_coffee: {{buy-me-a-coffee-username}}
+
+# Tidelift package identifier
+# tidelift: {{package-manager}}/{{package-name}}
+
+# Custom funding URLs (up to 4)
+# custom:
+#   - {{custom-funding-url-1}}
+#   - {{custom-funding-url-2}}

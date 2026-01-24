@@ -1,0 +1,34 @@
+# Node modules (including nested)
+node_modules/
+**/node_modules/
+
+# Test files and reports
+e2e/
+*.spec.js
+**/*.spec.js
+test-results/
+playwright-report/
+coverage/
+
+# Build output (rebuild fresh in container)
+dist/
+
+# Git
+.git/
+.gitignore
+
+# Documentation
+*.md
+
+# Environment files
+.env
+.env.*
+
+# IDE and editor config
+.vscode/
+.idea/
+*.swp
+*~
+
+# Playwright
+playwright.config.js

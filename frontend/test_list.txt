@@ -1,0 +1,75 @@
+Listing tests:
+  [chromium] › design-system.spec.js:47:3 › Design System - AC1: Dark Mode Colour Scheme › TC-DS01: Page background uses Deep Space colour (#0D1117)
+  [chromium] › design-system.spec.js:53:3 › Design System - AC1: Dark Mode Colour Scheme › TC-DS02: App container uses Deep Space background
+  [chromium] › design-system.spec.js:60:3 › Design System - AC1: Dark Mode Colour Scheme › TC-DS03: Task cards use Console Grey background (#161B22)
+  [chromium] › design-system.spec.js:67:3 › Design System - AC1: Dark Mode Colour Scheme › TC-DS04: Task cards use Grid Line border (#30363D)
+  [chromium] › design-system.spec.js:74:3 › Design System - AC1: Dark Mode Colour Scheme › TC-DS05: No pure black (#000000) used anywhere
+  [chromium] › design-system.spec.js:94:3 › Design System - AC2: Typography System › TC-DS06: UI text uses Space Grotesk font
+  [chromium] › design-system.spec.js:100:3 › Design System - AC2: Typography System › TC-DS07: Body text uses Space Grotesk font
+  [chromium] › design-system.spec.js:106:3 › Design System - AC2: Typography System › TC-DS08: Input fields use JetBrains Mono font
+  [chromium] › design-system.spec.js:112:3 › Design System - AC2: Typography System › TC-DS09: Primary text uses Bright White (#F0F6FC)
+  [chromium] › design-system.spec.js:124:3 › Design System - AC3: Status LED Indicators › TC-DS10: Incomplete task shows muted LED indicator
+  [chromium] › design-system.spec.js:137:3 › Design System - AC3: Status LED Indicators › TC-DS11: Complete task shows green LED indicator
+  [chromium] › design-system.spec.js:150:3 › Design System - AC3: Status LED Indicators › TC-DS12: Complete task LED has glow effect
+  [chromium] › design-system.spec.js:168:3 › Design System - AC4: Task Card Styling › TC-DS13: Task cards have 12px border radius
+  [chromium] › design-system.spec.js:175:3 › Design System - AC4: Task Card Styling › TC-DS14: Task cards have 16px padding
+  [chromium] › design-system.spec.js:189:3 › Design System - AC5: Button Styling › TC-DS15: Primary button uses Terminal Cyan (#22D3EE)
+  [chromium] › design-system.spec.js:195:3 › Design System - AC5: Button Styling › TC-DS16: Primary button has 8px border radius
+  [chromium] › design-system.spec.js:201:3 › Design System - AC5: Button Styling › TC-DS17: Danger button uses Red Alert (#F87171)
+  [chromium] › design-system.spec.js:213:3 › Design System - AC5: Button Styling › TC-DS18: Buttons have visible focus states
+  [chromium] › design-system.spec.js:229:3 › Design System - AC6: Input Field Styling › TC-DS19: Input has Terminal Dark background (#21262D)
+  [chromium] › design-system.spec.js:235:3 › Design System - AC6: Input Field Styling › TC-DS20: Input has Grid Line border (#30363D)
+  [chromium] › design-system.spec.js:245:3 › Design System - AC6: Input Field Styling › TC-DS21: Input focus shows glow effect
+  [chromium] › design-system.spec.js:253:3 › Design System - AC6: Input Field Styling › TC-DS22: Placeholder text uses Faded Grey (#484F58)
+  [chromium] › design-system.spec.js:266:3 › Design System - AC7: Spacing System › TC-DS23: App container uses correct padding
+  [chromium] › design-system.spec.js:280:3 › Design System - AC8: Hover and Focus States › TC-DS24: Task cards have hover transition
+  [chromium] › design-system.spec.js:289:3 › Design System - AC8: Hover and Focus States › TC-DS25: Buttons have hover transition
+  [chromium] › design-system.spec.js:298:3 › Design System - AC9: Reduced Motion Support › TC-DS26: Animations disabled with prefers-reduced-motion
+  [chromium] › design-system.spec.js:320:3 › Design System - AC10: Completed Task Visual Distinction › TC-DS27: Completed task title has strikethrough
+  [chromium] › design-system.spec.js:330:3 › Design System - AC10: Completed Task Visual Distinction › TC-DS28: Completed task uses muted text colour
+  [chromium] › design-system.spec.js:341:3 › Design System - AC10: Completed Task Visual Distinction › TC-DS29: Completed task shows green LED prominently
+  [chromium] › project-structure.spec.js:16:3 › Frontend Project Structure › TC004: src/App.jsx exists
+  [chromium] › project-structure.spec.js:21:3 › Frontend Project Structure › TC004: src/main.jsx exists
+  [chromium] › project-structure.spec.js:26:3 › Frontend Project Structure › TC004: package.json contains React 18
+  [chromium] › project-structure.spec.js:33:3 › Frontend Project Structure › TC004: package.json contains Vite
+  [chromium] › project-structure.spec.js:40:3 › Frontend Project Structure › TC005: Frontend serves on port 5173
+  [chromium] › project-structure.spec.js:46:3 › Frontend Project Structure › TC005: Backend health check accessible
+  [chromium] › task-delete.spec.js:28:3 › Task Deletion › TC025: Delete option is accessible in detail view
+  [chromium] › task-delete.spec.js:36:3 › Task Deletion › TC026: Confirmation dialog appears on delete
+  [chromium] › task-delete.spec.js:47:3 › Task Deletion › TC026: Confirmation dialog shows task title
+  [chromium] › task-delete.spec.js:55:3 › Task Deletion › TC026: Confirmation dialog shows warning message
+  [chromium] › task-delete.spec.js:63:3 › Task Deletion › TC026: Confirmation dialog has confirm and cancel buttons
+  [chromium] › task-delete.spec.js:74:3 › Task Deletion › TC028: Cancelled deletion preserves task - dialog closes
+  [chromium] › task-delete.spec.js:88:3 › Task Deletion › TC028: Cancelled deletion preserves task - task still in list
+  [chromium] › task-delete.spec.js:102:3 › Task Deletion › TC029: Delete from detail view removes task
+  [chromium] › task-delete.spec.js:113:3 › Task Deletion › TC029: Delete from detail view - task removed from list
+  [chromium] › task-detail.spec.js:28:3 › Task Detail View › TC019: Task detail view is accessible - modal opens on click
+  [chromium] › task-detail.spec.js:36:3 › Task Detail View › TC019: Task detail view shows title
+  [chromium] › task-detail.spec.js:43:3 › Task Detail View › TC019: Task detail view shows description
+  [chromium] › task-detail.spec.js:50:3 › Task Detail View › TC019: Task detail view shows timestamps
+  [chromium] › task-detail.spec.js:60:3 › Task Detail View › TC019: Edit button is visible in detail view
+  [chromium] › task-detail.spec.js:67:3 › Task Detail View › TC023: User can cancel edit - changes are discarded
+  [chromium] › task-detail.spec.js:85:3 › Task Detail View › TC023: User can cancel edit - original description displayed
+  [chromium] › task-detail.spec.js:102:3 › Task Detail View › TC024: User can return to list from detail view
+  [chromium] › task-detail.spec.js:118:3 › Task Detail View › TC024: User can close modal by clicking backdrop
+  [chromium] › task-form.spec.js:17:3 › Task Creation Form › TC006: Task creation form is accessible
+  [chromium] › task-form.spec.js:31:3 › Task Creation Form › TC008: Task appears in list after creation
+  [chromium] › task-form.spec.js:44:3 › Task Creation Form › TC008: Form clears after task creation
+  [chromium] › task-form.spec.js:61:3 › Task Creation Form › TC018: List updates after task creation without page refresh
+  [chromium] › task-list.spec.js:13:3 › Task List Display › TC015: Task list item shows key information
+  [chromium] › task-list.spec.js:36:3 › Task List Display › TC016: Completed tasks are visually distinct - strikethrough
+  [chromium] › task-list.spec.js:62:3 › Task List Display › TC016: Completed tasks are visually distinct - muted colour
+  [chromium] › task-list.spec.js:82:3 › Task List Display › TC017: Empty state is displayed
+  [chromium] › task-list.spec.js:102:3 › Task List Display › TC015: Tasks maintain position order
+  [chromium] › task-reorder.spec.js:36:3 › Task Reorder › TC-R01: Drag handle is visible on each task
+  [chromium] › task-reorder.spec.js:54:3 › Task Reorder › TC-R02: Drag handle has grab cursor
+  [chromium] › task-reorder.spec.js:65:3 › Task Reorder › TC-R03: Task can be dragged from position 1 to position 3
+  [chromium] › task-reorder.spec.js:101:3 › Task Reorder › TC-R04: Task can be dragged from position 3 to position 1
+  [chromium] › task-reorder.spec.js:137:3 › Task Reorder › TC-R05: Reorder persists after page refresh
+  [chromium] › task-reorder.spec.js:177:3 › Task Reorder › TC-R06: API reorder endpoint returns updated tasks
+  [chromium] › task-reorder.spec.js:200:3 › Task Reorder › TC-R07: Single task list shows drag handle but no reorder needed
+  [chromium] › task-reorder.spec.js:211:3 › Task Reorder › TC-R08: Empty task list shows no drag handles
+  [chromium] › task-reorder.spec.js:222:3 › Task Reorder › TC-R09: Checkbox still works after reorder
+  [chromium] › ts0002-task-organisation.spec.js:35:3 › TS0002: Task Organisation › TC0002-1: Toggle Task Completion (E2E)
+  [chromium] › ts0002-task-organisation.spec.js:68:3 › TS0002: Task Organisation › TC0002-3: Drag-and-Drop Reordering (E2E)
+Total: 73 tests in 8 files

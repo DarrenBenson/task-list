@@ -1,0 +1,50 @@
+# Test files and fixtures
+tests/
+*.spec.py
+conftest.py
+
+# Python cache and bytecode
+__pycache__/
+**/__pycache__/
+*.pyc
+**/*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environment
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Git
+.git/
+.gitignore
+
+# IDE and editor config
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Documentation
+*.md
+docs/
+
+# Database (will be mounted as volume)
+*.db
+
+# Development dependencies
+requirements-dev.txt
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
