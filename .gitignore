@@ -159,7 +159,6 @@ out/
 .netlify/
 
 # Package manager files
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
 bun.lockb
@@ -253,6 +252,9 @@ temp/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+frontend/test_list.txt
+backend/tasks.db
+tasks.db
 
 # Vitest
 vitest.config.ts.timestamp-*
