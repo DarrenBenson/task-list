@@ -11,8 +11,6 @@ Covers TS0012 test cases:
 - TC0012-E2: Empty string deadline treated as null
 """
 
-import uuid
-from datetime import datetime, timedelta, timezone
 
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
