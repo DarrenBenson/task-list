@@ -2,7 +2,7 @@
 
 > **Project:** Task Management System
 > **Version:** 1.0
-> **Last Updated:** 2026-01-23
+> **Last Updated:** 2026-01-28
 > **Owner:** Development Team
 
 ## Overview
@@ -39,12 +39,11 @@ This document defines the test strategy for a single-user task management web ap
 
 ### Coverage Targets
 
-**Default: 90% line coverage**
+**Default: 90% line coverage (backend)**
 
 | Level | Target | Rationale |
 |-------|--------|-----------|
-| Unit | 90% | Core business logic must be thoroughly tested |
-| Integration | 85% | API and database interactions |
+| Backend Unit/Integration | 90% | Core business logic must be thoroughly tested |
 | E2E | 100% feature coverage | Every user-visible feature has at least one spec file |
 
 **Why 90%?** AI-assisted development produces code faster than traditional development. Higher coverage gates ensure AI-generated code is correct and catches hallucinations early. This target has been proven achievable with AI assistance across multiple projects.
@@ -54,9 +53,9 @@ This document defines the test strategy for a single-user task management web ap
 | Attribute | Value |
 |-----------|-------|
 | Coverage Target | 90% (see Coverage Targets above) |
-| Framework | pytest (backend), Vitest (frontend) |
+| Framework | pytest (backend) |
 | Responsibility | Developers |
-| Execution | Pre-commit, CI on every push |
+| Execution | Manual, pre-commit hooks |
 
 **Backend Focus Areas:**
 - Task model validation
@@ -64,11 +63,7 @@ This document defines the test strategy for a single-user task management web ap
 - Timestamp handling
 - Schema validation (Pydantic)
 
-**Frontend Focus Areas:**
-- Component rendering
-- State management hooks
-- Form validation
-- Utility functions
+**Note:** Frontend testing is done via E2E tests with Playwright. No separate frontend unit tests.
 
 ### Integration Testing
 
@@ -108,15 +103,17 @@ This document defines the test strategy for a single-user task management web ap
 
 | Feature Area | Spec File | Test Count | Status |
 |--------------|-----------|------------|--------|
-| Task Creation | `task-create.spec.ts` | 4+ | Planned |
-| Task List View | `task-list.spec.ts` | 3+ | Planned |
-| Task Details | `task-details.spec.ts` | 3+ | Planned |
-| Task Editing | `task-edit.spec.ts` | 4+ | Planned |
-| Task Completion | `task-complete.spec.ts` | 3+ | Planned |
-| Task Reordering | `task-reorder.spec.ts` | 4+ | Planned |
-| Task Deletion | `task-delete.spec.ts` | 3+ | Planned |
+| Task Creation | `task-form.spec.js` | 4 | Done |
+| Task List View | `task-list.spec.js` | 5 | Done |
+| Task Details | `task-detail.spec.js` | 8 | Done |
+| Task Completion | `ts0002-task-organisation.spec.js` | 2 | Done |
+| Task Reordering | `task-reorder.spec.js` | 10 | Done |
+| Task Deletion | `task-delete.spec.js` | 10 | Done |
+| Task Deadlines | `task-deadline.spec.js` | 15 | Done |
+| Design System | `design-system.spec.js` | 29 | Done |
+| Project Structure | `project-structure.spec.js` | 2 | Done |
 
-**Naming convention:** `[feature].spec.ts`
+**Naming convention:** `[feature].spec.js`
 
 **Minimum per feature:**
 - Happy path scenario
@@ -275,31 +272,10 @@ No sensitive data - single-user system without authentication or PII.
 
 | Layer | Tool | Language |
 |-------|------|----------|
-| E2E/UI | Playwright | TypeScript |
+| E2E/UI | Playwright | JavaScript |
 | API | pytest + httpx | Python |
 | Unit (Backend) | pytest | Python |
-| Unit (Frontend) | Vitest | TypeScript |
 | Coverage (Backend) | pytest-cov | Python |
-| Coverage (Frontend) | V8 via Vitest | TypeScript |
-
-## CI/CD Integration
-
-### Pipeline Stages
-
-1. **Pre-commit:** Linting (ruff, ESLint), formatting
-2. **PR:** Unit tests + integration tests + coverage check
-3. **Merge to main:** Full E2E suite
-4. **Pre-release:** Full suite + manual smoke test
-
-### Quality Gates
-
-| Gate | Criteria | Blocking |
-|------|----------|----------|
-| Unit coverage | >= 90% | Yes |
-| Integration tests | 100% pass | Yes |
-| E2E critical path | 100% pass | Yes |
-| E2E full suite | >= 95% pass | No (alerts) |
-| Lint | Zero errors | Yes |
 
 ## Defect Management
 
@@ -333,8 +309,8 @@ No sensitive data - single-user system without authentication or PII.
 
 ### Reporting Cadence
 
-- **Every push:** CI dashboard with pass/fail
 - **Pre-release:** Full test report with coverage
+- **Manual runs:** Console output with pass/fail summary
 
 ## Roles & Responsibilities
 
@@ -349,20 +325,18 @@ No sensitive data - single-user system without authentication or PII.
 | Purpose | Tool |
 |---------|------|
 | Test Management | Markdown test specs in sdlc-studio/ |
-| CI/CD | GitHub Actions (recommended) |
 | Browser Automation | Playwright |
 | API Testing | pytest + httpx |
-| Mocking | unittest.mock (Python), vi.mock (Vitest) |
+| Mocking | unittest.mock (Python) |
 | Coverage (Backend) | pytest-cov |
-| Coverage (Frontend) | V8 via Vitest |
-| Reporting | CI console output, coverage reports |
+| Reporting | Console output, coverage reports |
 
 ### Coverage Configuration
 
 | Setting | Value | Notes |
 |---------|-------|-------|
-| Tool | pytest-cov (backend), V8 (frontend) | See language-specific below |
-| Source | backend/app, frontend/src | Package directories |
+| Tool | pytest-cov (backend) | Python coverage |
+| Source | backend/app | Package directory |
 | Branch | Yes | Branch coverage enabled |
 | Threshold | 90% | Per Coverage Targets section |
 
@@ -375,22 +349,6 @@ branch = true
 
 [tool.coverage.report]
 fail_under = 90
-```
-
-**TypeScript (Frontend):**
-```typescript
-// vitest.config.ts
-export default defineConfig({
-  test: {
-    coverage: {
-      provider: 'v8',
-      thresholds: {
-        lines: 90,
-        branches: 85
-      }
-    }
-  }
-})
 ```
 
 ## Test Anti-Patterns
@@ -453,8 +411,8 @@ await expect(page.locator('[data-position="1"]')).toHaveText('Moved Task');
 |-------|----------|---------|
 | Backend Unit | `/backend/tests/` | `test_*.py` |
 | Backend Integration | `/backend/tests/` | `test_api_*.py` |
-| Frontend Unit | `/frontend/src/**/*.test.ts` | Co-located |
-| E2E | `/frontend/e2e/` or `/e2e/` | `*.spec.ts` |
+| E2E | `/frontend/e2e/` | `*.spec.js` |
+| Docker Integration | `/tests/` | `test_docker_*.py` |
 
 ## Related Specifications
 
@@ -466,3 +424,4 @@ await expect(page.locator('[data-position="1"]')).toHaveText('Moved Task');
 | Date | Author | Change |
 |------|--------|--------|
 | 2026-01-23 | Claude | Initial TSD creation |
+| 2026-01-28 | Claude | Updated E2E matrix to reflect actual spec files (.spec.js), added deadline and design-system specs, removed CI/CD section |

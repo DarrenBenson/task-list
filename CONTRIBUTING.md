@@ -1,6 +1,6 @@
-# Contributing to {{project-name}}
+# Contributing to Task Manager
 
-Thank you for considering contributing to {{project-name}}.
+Thank you for considering contributing to Task Manager.
 
 ## How to Contribute
 
@@ -29,18 +29,59 @@ Thank you for considering contributing to {{project-name}}.
 
 ### Code Style
 
-{{code-style-guidelines}}
+**Python (Backend):**
+- Follow PEP 8
+- Use type hints
+- Format with `ruff format`
+- Lint with `ruff check`
+
+**JavaScript (Frontend):**
+- Follow ESLint configuration
+- Use functional components with hooks
 
 ### Testing
 
-{{testing-requirements}}
+**Backend:**
+```bash
+cd backend
+source venv/bin/activate
+pytest tests/ -v
+```
+
+**Frontend E2E:**
+```bash
+cd frontend
+npm test
+```
+
+Coverage target: 90% for backend.
 
 ## Development Setup
 
+### Backend
+
 ```bash
-{{development-setup-commands}}
+cd backend
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements-dev.txt
+uvicorn app.main:app --reload
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### Docker
+
+```bash
+docker compose up -d
 ```
 
 ## Questions?
 
-{{contact-method}}
+Open a GitHub issue or discussion.

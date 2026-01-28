@@ -49,7 +49,7 @@ test.describe('Task List Display', () => {
     await expect(taskItem).not.toHaveClass(/completed/)
 
     // Toggle completion
-    await taskItem.locator('.task-checkbox-button').click()
+    await taskItem.locator('.task-checkbox-input').click()
 
     // Now has completed class
     await expect(taskItem).toHaveClass(/completed/)
@@ -71,7 +71,7 @@ test.describe('Task List Display', () => {
     await expect(taskItem).toBeVisible()
 
     // Toggle completion
-    await taskItem.locator('.task-checkbox-button').click()
+    await taskItem.locator('.task-checkbox-input').click()
     await expect(taskItem).toHaveClass(/completed/)
 
     // Completed task title has muted text colour (tertiary: #8B949E = rgb(139, 148, 158))

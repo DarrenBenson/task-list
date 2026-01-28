@@ -268,3 +268,6 @@ cypress/screenshots/
 
 # Docusaurus
 .docusaurus/
+
+# SDLC Studio local state
+sdlc-studio/.local/

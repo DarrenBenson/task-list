@@ -43,7 +43,7 @@ test.describe('TS0002: Task Organisation', () => {
 
     const taskItem = page.locator('.task-item').filter({ hasText: taskTitle })
     await expect(taskItem).toBeVisible()
-    const checkbox = taskItem.locator('.task-checkbox-button')
+    const checkbox = taskItem.locator('.task-checkbox-input')
     await expect(checkbox).toBeVisible()
 
     // When: the user clicks the checkbox

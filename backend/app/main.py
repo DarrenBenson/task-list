@@ -1,5 +1,6 @@
 """FastAPI application entry point."""
 
+import os
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
@@ -16,7 +17,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     # Startup: Create database tables
     Base.metadata.create_all(bind=engine)
     yield
-    # Shutdown: Nothing to clean up for SQLite
+    # Shutdown: Dispose of connection pool
+    engine.dispose()
 
 
 app = FastAPI(
@@ -26,13 +28,17 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Configure CORS for frontend development
+# Configure CORS from environment with sensible defaults
+ALLOWED_ORIGINS = os.getenv(
+    "ALLOWED_ORIGINS", "http://localhost:5173,http://localhost"
+).split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "Authorization"],
 )
 
 # Include routers

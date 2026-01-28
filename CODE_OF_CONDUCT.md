@@ -32,37 +32,9 @@ This Code of Conduct applies within all project spaces and when an individual is
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behaviour may be reported to the project team at:
-
-{{enforcement-contact}}
+Instances of abusive, harassing, or otherwise unacceptable behaviour may be reported to the project team via GitHub issues or by contacting the repository owner.
 
 All complaints will be reviewed and investigated promptly and fairly. The project team is obligated to maintain confidentiality with regard to the reporter of an incident.
-
-## Enforcement Guidelines
-
-### 1. Correction
-
-**Community Impact**: Use of inappropriate language or other behaviour deemed unprofessional.
-
-**Consequence**: A private, written warning with clarity around the nature of the violation.
-
-### 2. Warning
-
-**Community Impact**: A violation through a single incident or series of actions.
-
-**Consequence**: A warning with consequences for continued behaviour. No interaction with the people involved for a specified period.
-
-### 3. Temporary Ban
-
-**Community Impact**: A serious violation of community standards.
-
-**Consequence**: A temporary ban from any sort of interaction or public communication with the community for a specified period.
-
-### 4. Permanent Ban
-
-**Community Impact**: Demonstrating a pattern of violation of community standards.
-
-**Consequence**: A permanent ban from any sort of public interaction within the community.
 
 ## Attribution
 

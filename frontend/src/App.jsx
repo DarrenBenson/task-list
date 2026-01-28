@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 import TaskDetail from "./components/TaskDetail";
@@ -10,6 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedTaskId, setSelectedTaskId] = useState(null);
+  const [updateError, setUpdateError] = useState(null);
 
   const fetchTasks = async () => {
     setIsLoading(true);
@@ -58,7 +59,14 @@ function App() {
     setSelectedTaskId(null);
   };
 
+  const clearUpdateError = useCallback(() => {
+    setUpdateError(null);
+  }, []);
+
   const handleToggleComplete = async (taskId, isComplete) => {
+    // Clear any previous error
+    setUpdateError(null);
+
     // Optimistic update
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -82,18 +90,22 @@ function App() {
         prevTasks.map((task) => (task.id === taskId ? updatedTask : task)),
       );
     } catch (err) {
-      // Revert on error
+      // Revert on error and notify user
       setTasks((prevTasks) =>
         prevTasks.map((task) =>
           task.id === taskId ? { ...task, is_complete: !isComplete } : task,
         ),
       );
+      setUpdateError("Failed to update task. Please try again.");
     }
   };
 
   const handleReorder = async (oldIndex, newIndex) => {
     // Skip if same position
     if (oldIndex === newIndex) return;
+
+    // Clear any previous error
+    setUpdateError(null);
 
     // Save previous state for potential revert
     const previousTasks = [...tasks];
@@ -124,14 +136,28 @@ function App() {
       const updatedTasks = await response.json();
       setTasks(updatedTasks);
     } catch (err) {
-      // Revert on error
+      // Revert on error and notify user
       setTasks(previousTasks);
+      setUpdateError("Failed to reorder tasks. Please try again.");
     }
   };
 
   return (
     <div className="app">
       <h1>Task Manager</h1>
+
+      {updateError && (
+        <div className="toast-error" role="alert">
+          <span>{updateError}</span>
+          <button
+            className="toast-close"
+            onClick={clearUpdateError}
+            aria-label="Dismiss"
+          >
+            ×
+          </button>
+        </div>
+      )}
 
       <TaskForm onTaskCreated={handleTaskCreated} />
 
@@ -239,6 +265,49 @@ function App() {
           font-family: 'Space Grotesk', system-ui, sans-serif;
           font-size: 2rem;
           font-weight: 700;
+        }
+
+        /* Toast Notification */
+        .toast-error {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--space-3);
+          padding: var(--space-3) var(--space-4);
+          margin-bottom: var(--space-4);
+          background: rgba(248, 113, 113, 0.15);
+          border: 1px solid var(--status-error);
+          border-radius: var(--radius-md);
+          color: var(--status-error);
+          animation: slideIn var(--transition-normal) ease-out;
+        }
+
+        .toast-close {
+          background: none;
+          border: none;
+          padding: var(--space-1);
+          color: var(--status-error);
+          cursor: pointer;
+          font-size: 18px;
+          line-height: 1;
+          opacity: 0.7;
+        }
+
+        .toast-close:hover {
+          opacity: 1;
+          background: rgba(248, 113, 113, 0.2);
+          border-radius: var(--radius-sm);
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         /* Task Form Styles */
@@ -398,27 +467,34 @@ function App() {
           50% { opacity: 0.7; box-shadow: 0 0 16px var(--status-success-glow); }
         }
 
-        .task-checkbox-button {
-          background: none;
-          border: none;
-          padding: var(--space-1);
-          margin: calc(-1 * var(--space-1));
-          cursor: pointer;
-          border-radius: var(--radius-sm);
+        .task-checkbox-wrapper {
+          position: relative;
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: var(--space-1);
+          margin: calc(-1 * var(--space-1));
+          border-radius: var(--radius-sm);
+          cursor: pointer;
           color: var(--text-tertiary);
         }
 
-        .task-checkbox-button:hover {
+        .task-checkbox-wrapper:hover {
           background: rgba(34, 211, 238, 0.1);
           color: var(--interactive-default);
         }
 
-        .task-checkbox-button:focus {
-          outline: none;
+        .task-checkbox-wrapper:focus-within {
           box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.3);
+        }
+
+        .task-checkbox-input {
+          position: absolute;
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          margin: 0;
         }
 
         .task-checkbox {
@@ -427,6 +503,7 @@ function App() {
           flex-shrink: 0;
           width: 24px;
           text-align: center;
+          pointer-events: none;
         }
 
         .task-item.completed .task-checkbox {

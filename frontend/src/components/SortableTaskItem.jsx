@@ -42,23 +42,6 @@ function SortableTaskItem({ task, onTaskClick, onToggleComplete }) {
     transition,
   };
 
-  const handleCheckboxClick = (e) => {
-    e.stopPropagation();
-    if (onToggleComplete) {
-      onToggleComplete(task.id, !task.is_complete);
-    }
-  };
-
-  const handleCheckboxKeyDown = (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      e.stopPropagation();
-      if (onToggleComplete) {
-        onToggleComplete(task.id, !task.is_complete);
-      }
-    }
-  };
-
   const handleItemClick = () => {
     if (onTaskClick) {
       onTaskClick(task.id);
@@ -80,9 +63,9 @@ function SortableTaskItem({ task, onTaskClick, onToggleComplete }) {
       style={style}
       className={`task-item ${task.is_complete ? "completed" : ""} ${isDragging ? "dragging" : ""}`}
       onClick={handleItemClick}
-      role="button"
       tabIndex={0}
       onKeyDown={handleItemKeyDown}
+      aria-label={`Task: ${task.title}${task.is_complete ? " (completed)" : ""}`}
     >
       <button
         className="drag-handle"
@@ -96,22 +79,28 @@ function SortableTaskItem({ task, onTaskClick, onToggleComplete }) {
       </button>
       <span
         className="status-led"
-        aria-label={task.is_complete ? "Complete" : "Incomplete"}
-        role="status"
+        aria-hidden="true"
       />
-      <button
-        className="task-checkbox-button"
-        onClick={handleCheckboxClick}
-        onKeyDown={handleCheckboxKeyDown}
-        aria-label={
-          task.is_complete ? "Mark as incomplete" : "Mark as complete"
-        }
-        type="button"
-      >
+      <span className="task-checkbox-wrapper">
+        <input
+          type="checkbox"
+          className="task-checkbox-input"
+          checked={task.is_complete}
+          onChange={(e) => {
+            e.stopPropagation();
+            if (onToggleComplete) {
+              onToggleComplete(task.id, e.target.checked);
+            }
+          }}
+          onClick={(e) => e.stopPropagation()}
+          aria-label={
+            task.is_complete ? "Mark as incomplete" : "Mark as complete"
+          }
+        />
         <span className="task-checkbox" aria-hidden="true">
           {task.is_complete ? "☑" : "☐"}
         </span>
-      </button>
+      </span>
       <div className="task-content">
         <span className="task-title">{task.title}</span>
         {task.description && (

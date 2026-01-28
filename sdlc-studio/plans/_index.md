@@ -23,19 +23,6 @@ This file tracks all implementation plans in the project.
 - **In Progress:** 0
 - **Draft:** 0
 
-## By Epic
-
-### EP0001: Core Task Management
-...
-### EP0004: Docker Containerisation
-
-| Plan | Story | Status |
-|------|-------|--------|
-| PL0009 | US0009 | ✅ Complete |
-| PL0010 | US0010 | ✅ Complete |
-| PL0011 | US0011 | ✅ Complete |
-
-
 ---
 
-*Last updated: 2026-01-23 (PL0010 completed)*
+*Last updated: 2026-01-27 (v2 schema upgrade)*

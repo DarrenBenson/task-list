@@ -65,12 +65,16 @@ function TaskDetail({ taskId, onClose, onTaskUpdated, onTaskDeleted }) {
   const [deleteError, setDeleteError] = useState("");
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     const fetchTask = async () => {
       setIsLoading(true);
       setError(null);
 
       try {
-        const response = await fetch(`${API_BASE_URL}/tasks/${taskId}`);
+        const response = await fetch(`${API_BASE_URL}/tasks/${taskId}`, {
+          signal: abortController.signal,
+        });
         if (response.status === 404) {
           setError("Task not found");
           return;
@@ -84,13 +88,23 @@ function TaskDetail({ taskId, onClose, onTaskUpdated, onTaskDeleted }) {
         setEditDescription(data.description || "");
         setEditDeadline(toDatetimeLocalValue(data.deadline));
       } catch (err) {
+        // Ignore abort errors (component unmounted or taskId changed)
+        if (err.name === "AbortError") {
+          return;
+        }
         setError("Unable to load task. Please try again.");
       } finally {
-        setIsLoading(false);
+        if (!abortController.signal.aborted) {
+          setIsLoading(false);
+        }
       }
     };
 
     fetchTask();
+
+    return () => {
+      abortController.abort();
+    };
   }, [taskId]);
 
   const handleEdit = () => {
@@ -194,7 +208,7 @@ function TaskDetail({ taskId, onClose, onTaskUpdated, onTaskDeleted }) {
   };
 
   const handleBackdropClick = (e) => {
-    if (e.target === e.currentTarget && !isEditing && !showDeleteConfirm) {
+    if (e.target === e.currentTarget && !isEditing && !showDeleteConfirm && !isDeleting) {
       onClose();
     }
   };

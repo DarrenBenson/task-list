@@ -242,7 +242,7 @@ test.describe('Task Reorder', () => {
     await page.waitForTimeout(500)
 
     // Now toggle completion on the first task (which was Task 2)
-    const checkbox = page.locator('.task-checkbox-button').first()
+    const checkbox = page.locator('.task-checkbox-input').first()
     await checkbox.click()
 
     // Wait for update

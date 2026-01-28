@@ -181,20 +181,18 @@ Self-contained task management system running on a local machine. No external se
 
 **Response 200:**
 ```json
-{
-  "tasks": [
-    {
-      "id": "550e8400-e29b-41d4-a716-446655440000",
-      "title": "Buy groceries",
-      "description": "Milk, bread, eggs",
-      "is_complete": false,
-      "position": 1,
-      "created_at": "2026-01-23T10:30:00Z",
-      "updated_at": "2026-01-23T10:30:00Z"
-    }
-  ],
-  "count": 1
-}
+[
+  {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "title": "Buy groceries",
+    "description": "Milk, bread, eggs",
+    "is_complete": false,
+    "position": 1,
+    "deadline": null,
+    "created_at": "2026-01-23T10:30:00Z",
+    "updated_at": "2026-01-23T10:30:00Z"
+  }
+]
 ```
 
 #### Get Task (GET /api/v1/tasks/{task_id})
@@ -207,6 +205,7 @@ Self-contained task management system running on a local machine. No external se
   "description": "Milk, bread, eggs",
   "is_complete": false,
   "position": 1,
+  "deadline": null,
   "created_at": "2026-01-23T10:30:00Z",
   "updated_at": "2026-01-23T10:30:00Z"
 }
@@ -218,7 +217,8 @@ Self-contained task management system running on a local machine. No external se
 ```json
 {
   "title": "string (required, 1-200 chars)",
-  "description": "string (optional, 0-2000 chars)"
+  "description": "string (optional, 0-2000 chars)",
+  "deadline": "datetime (optional, ISO 8601 format)"
 }
 ```
 
@@ -230,6 +230,7 @@ Self-contained task management system running on a local machine. No external se
   "description": "string | null",
   "is_complete": false,
   "position": "integer",
+  "deadline": "datetime | null",
   "created_at": "datetime",
   "updated_at": "datetime"
 }
@@ -243,7 +244,8 @@ Self-contained task management system running on a local machine. No external se
   "title": "string (1-200 chars)",
   "description": "string (0-2000 chars)",
   "is_complete": "boolean",
-  "position": "integer"
+  "position": "integer (must be >= 1)",
+  "deadline": "datetime (ISO 8601 format)"
 }
 ```
 
@@ -258,19 +260,26 @@ Self-contained task management system running on a local machine. No external se
 **Request:**
 ```json
 {
-  "task_positions": [
-    {"id": "uuid", "position": 1},
-    {"id": "uuid", "position": 2}
-  ]
+  "task_ids": ["uuid", "uuid", "uuid"]
 }
 ```
 
+Task IDs are provided in the desired display order. Positions are recalculated automatically (1, 2, 3, ...). All task IDs must be included.
+
 **Response 200:**
 ```json
-{
-  "tasks": ["array of full task objects in new order"],
-  "count": "integer"
-}
+[
+  {
+    "id": "uuid",
+    "title": "string",
+    "description": "string | null",
+    "is_complete": false,
+    "position": 1,
+    "deadline": "datetime | null",
+    "created_at": "datetime",
+    "updated_at": "datetime"
+  }
+]
 ```
 
 ### Error Response Format
@@ -303,6 +312,7 @@ Or for validation errors (422):
 | 400 | Bad Request | Malformed JSON |
 | 404 | Not Found | Task ID doesn't exist |
 | 422 | Unprocessable Entity | Validation failure |
+| 409 | Conflict | Race condition on create (retry) |
 | 500 | Internal Server Error | Unexpected server error |
 
 ---
@@ -320,6 +330,7 @@ Or for validation errors (422):
 | description | String(2000) | NULL allowed | Detailed description |
 | is_complete | Boolean | NOT NULL, default=false | Completion status |
 | position | Integer | NOT NULL, UNIQUE | Sort order (lower = higher) |
+| deadline | DateTime | NULL allowed | Optional due date (UTC) |
 | created_at | DateTime | NOT NULL, auto-set | Creation timestamp (UTC) |
 | updated_at | DateTime | NOT NULL, auto-update | Last modification (UTC) |
 
@@ -536,13 +547,13 @@ Not applicable - single-user system.
 
 ## 11. Open Technical Questions
 
-- [ ] **Q:** Should drag handle be always visible or hover-only?
+- [x] **Q:** Should drag handle be always visible or hover-only?
   **Context:** UX decision affecting CSS implementation.
-  **Options:** Always visible, hover-only on desktop, always visible on mobile
+  **Resolution:** Always visible. Provides consistent affordance for drag-and-drop.
 
-- [ ] **Q:** Use @dnd-kit or react-beautiful-dnd?
+- [x] **Q:** Use @dnd-kit or react-beautiful-dnd?
   **Context:** Both are viable drag-and-drop libraries.
-  **Options:** @dnd-kit (more flexible, smaller), react-beautiful-dnd (more opinionated)
+  **Resolution:** @dnd-kit selected. Smaller bundle, more flexible, actively maintained.
 
 ---
 
@@ -575,3 +586,4 @@ Not applicable - single-user system.
 | Date | Version | Changes |
 |------|---------|---------|
 | 2026-01-23 | 1.0 | Initial draft from PRD and spec.md |
+| 2026-01-28 | 1.1 | Updated API response formats to match implementation, added deadline field, resolved open questions, added HTTP 409 status code |

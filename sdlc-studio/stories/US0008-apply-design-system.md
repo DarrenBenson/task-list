@@ -345,31 +345,6 @@ Use Google Fonts with `display=swap` to prevent invisible text during loading:
 
 None - design system fully specified in brand guide.
 
-## Quality Checklist
-
-### All Stories
-
-- [x] No ambiguous language
-- [x] Open Questions: 0 unresolved
-- [x] Given/When/Then uses concrete values
-- [x] Persona referenced with specific context
-
-### UI Stories
-
-- [x] Colour values specified in hex
-- [x] Typography specified (font family, sizes)
-- [x] Spacing values specified
-- [x] Interaction states defined (hover, focus)
-- [x] Accessibility requirements stated
-
-### Ready Status Gate
-
-This story can be marked **Ready** when:
-- [x] All critical Open Questions resolved
-- [x] Design system documented in brand guide
-- [x] Colour tokens defined
-- [x] No "TBD" placeholders in acceptance criteria
-
 ## Revision History
 
 | Date | Author | Change |

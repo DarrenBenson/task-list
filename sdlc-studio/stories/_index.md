@@ -57,35 +57,6 @@ This file tracks all user stories in the project.
 - **In Progress:** 0
 - **Draft:** 0
 
-## Dependency Graph
-
-```
-US0001 (Project Setup)
-    │
-    ├── US0002 (Create Task)
-    │       │
-    │       └── US0003 (View Task List)
-    │               │
-    │               ├── US0004 (View/Edit Task)
-    │               │       │
-    │               │       └── US0008 (Apply Design System) [EP0003]
-    │               │
-    │               ├── US0005 (Delete Task)
-    │               │
-    │               ├── US0006 (Toggle Completion) [EP0002]
-    │               │
-    │               └── US0007 (Reorder Tasks) [EP0002]
-    │                       │
-    │                       └── US0008 (Apply Design System) [EP0003]
-    │
-    │
-EP0004 Docker Stories (independent of app stories):
-
-US0009 (Backend Docker) ──┐
-                          ├── US0011 (Docker Compose)
-US0010 (Frontend Docker) ─┘
-```
-
 ## PRD Feature Mapping
 
 | PRD Feature | Story | Status |
@@ -97,8 +68,8 @@ US0010 (Frontend Docker) ─┘
 | FR-005: Toggle Completion | US0006 | Complete |
 | FR-006: Reorder Tasks | US0007 | Complete |
 | FR-007: Delete Task | US0005 | Complete |
-| FR-008: Task Deadlines | US0012 | Ready |
+| FR-008: Task Deadlines | US0012 | Complete |
 
 ---
 
-*Last updated: 2026-01-23 (US0012 added)*
+*Last updated: 2026-01-27 (v2 schema upgrade)*

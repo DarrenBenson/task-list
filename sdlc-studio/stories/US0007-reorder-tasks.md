@@ -212,30 +212,6 @@ Errors:
 
 - [x] Should drag handle be visible always or on hover only? - **Decision:** Always visible (better discoverability, mobile-friendly)
 
-## Quality Checklist
-
-### API Stories (minimum requirements)
-
-- [x] Edge cases: 8/8 minimum documented
-- [x] Test scenarios: 11/10 minimum listed
-- [x] API contracts: Exact request/response JSON shapes documented
-- [x] Error codes: All error codes with exact messages specified
-
-### All Stories
-
-- [x] No ambiguous language
-- [x] Open Questions: 1/1 resolved
-- [x] Given/When/Then uses concrete values
-- [x] Persona referenced with specific context
-
-### Ready Status Gate
-
-This story can be marked **Ready** when:
-- [x] All critical Open Questions resolved
-- [x] Minimum edge case count met
-- [x] No "TBD" placeholders in acceptance criteria
-- [x] Error scenarios documented
-
 ## Revision History
 
 | Date | Author | Change |

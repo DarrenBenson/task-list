@@ -325,30 +325,6 @@ Response (201):
 
 None - all questions resolved during story creation.
 
-## Quality Checklist
-
-### API Stories (minimum requirements)
-
-- [x] Edge cases: 10/8 minimum documented
-- [x] Test scenarios: 15/10 minimum listed
-- [x] API contracts: Exact request/response JSON shapes documented
-- [x] Error codes: All error codes with exact messages specified
-
-### All Stories
-
-- [x] No ambiguous language (avoid: "handles errors", "returns data", "works correctly")
-- [x] Open Questions: 0/0 resolved (critical must be resolved)
-- [x] Given/When/Then uses concrete values, not placeholders
-- [x] Persona referenced with specific context
-
-### Ready Status Gate
-
-This story can be marked **Ready** when:
-- [x] All critical Open Questions resolved
-- [x] Minimum edge case count met (API stories)
-- [x] No "TBD" placeholders in acceptance criteria
-- [x] Error scenarios documented (not just happy path)
-
 ## Revision History
 
 | Date | Author | Change |

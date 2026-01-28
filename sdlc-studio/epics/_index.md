@@ -17,20 +17,6 @@ This file tracks all epics in the project.
 - **Draft:** 0
 - **In Progress:** 0
 
-## Dependency Graph
-
-```
-EP0001 (Core Task Management) ✅
-    │
-    ├── EP0002 (Task Organisation) ✅
-    │       │
-    │       └── EP0003 (UX Improvements) ✅
-    │               │
-    │               └── EP0004 (Docker Containerisation) ✅
-    │
-    └── EP0004 (Docker Containerisation) ✅
-```
-
 ## PRD Feature Mapping
 
 | PRD Feature | Epic | Status |
@@ -57,4 +43,4 @@ EP0001 (Core Task Management) ✅
 
 ---
 
-*Last updated: 2026-01-23 (EP0005 added)*
+*Last updated: 2026-01-27 (v2 schema upgrade)*

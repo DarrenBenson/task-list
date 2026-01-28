@@ -317,29 +317,6 @@ This follows the "minimal deployment principle" - only production-essential file
 
 None - requirements clear from epic.
 
-## Quality Checklist
-
-### All Stories
-
-- [x] No ambiguous language
-- [x] Open Questions: 0 unresolved
-- [x] Given/When/Then uses concrete values
-- [x] Persona referenced with specific context
-
-### Infrastructure Stories
-
-- [x] File paths specified
-- [x] Commands provided
-- [x] Security considerations addressed
-- [x] Size/performance targets defined
-
-### Ready Status Gate
-
-This story can be marked **Ready** when:
-- [x] All critical Open Questions resolved
-- [x] Epic constraints incorporated
-- [x] No "TBD" placeholders in acceptance criteria
-
 ## Revision History
 
 | Date | Author | Change |

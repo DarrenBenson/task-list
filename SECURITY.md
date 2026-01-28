@@ -4,8 +4,7 @@
 
 | Version | Supported |
 |---------|-----------|
-| {{current-version}} | Yes |
-| {{older-versions}} | {{support-status}} |
+| 1.x     | Yes       |
 
 ## Reporting a Vulnerability
 
@@ -13,7 +12,8 @@
 
 Instead, please report them via:
 
-{{reporting-method}}
+- Email: Create a private security advisory via GitHub's Security tab
+- Or open a draft security advisory at: https://github.com/DarrenBenson/task-list/security/advisories/new
 
 Include the following information:
 
@@ -26,9 +26,9 @@ Include the following information:
 
 ## Response Timeline
 
-- **Initial response**: Within {{initial-response-time}}
-- **Status update**: Within {{status-update-time}}
-- **Resolution target**: Within {{resolution-time}}
+- **Initial response**: Within 48 hours
+- **Status update**: Within 7 days
+- **Resolution target**: Within 30 days (critical), 90 days (other)
 
 ## Disclosure Policy
 
@@ -38,8 +38,13 @@ Include the following information:
 
 ## Security Measures
 
-{{security-measures}}
+This project implements:
+
+- Input validation on both client and server (Pydantic schemas)
+- SQL injection prevention via SQLAlchemy ORM
+- XSS prevention via React's default escaping
+- CORS configuration restricting origins
 
 ## Contact
 
-{{security-contact}}
+For security concerns, use GitHub's private vulnerability reporting feature.

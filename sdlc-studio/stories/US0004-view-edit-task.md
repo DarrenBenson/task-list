@@ -255,28 +255,6 @@ None.
 From PRD (inherited):
 - [ ] Should task list display show truncated descriptions or title only? - Owner: Product
 
-## Quality Checklist
-
-### API Stories (minimum requirements)
-
-- [x] Edge cases: 10/8 minimum documented
-- [x] Test scenarios: 13/10 minimum listed
-- [x] API contracts: Exact request/response JSON shapes documented
-- [x] Error codes: All error codes with exact messages specified
-
-### All Stories
-
-- [x] No ambiguous language
-- [ ] Open Questions: 0/1 resolved (non-critical)
-- [x] Given/When/Then uses concrete values
-- [x] Persona referenced with specific context
-
-### Ready Status Gate
-
-- [x] All critical Open Questions resolved
-- [x] Minimum edge case count met
-- [x] No "TBD" placeholders in acceptance criteria
-- [x] Error scenarios documented
 
 ## Revision History
 

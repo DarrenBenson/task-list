@@ -39,6 +39,14 @@ class TaskUpdate(BaseModel):
             raise ValueError("title cannot be blank")
         return v
 
+    @field_validator("position")
+    @classmethod
+    def position_must_be_positive(cls, v: Optional[int]) -> Optional[int]:
+        """Validate that position is positive if provided."""
+        if v is not None and v < 1:
+            raise ValueError("position must be >= 1")
+        return v
+
 
 class TaskResponse(BaseModel):
     """Schema for task responses."""

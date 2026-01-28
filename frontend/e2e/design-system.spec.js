@@ -46,7 +46,7 @@ async function createTask(page, title, description = '') {
 
 // Helper to toggle task completion and wait for API
 async function toggleTaskCompletion(page, taskLocator) {
-  const checkbox = taskLocator.locator('.task-checkbox-button')
+  const checkbox = taskLocator.locator('.task-checkbox-input')
   await Promise.all([
     page.waitForResponse(resp => resp.url().includes('/api/v1/tasks/') && resp.request().method() === 'PATCH'),
     checkbox.click()

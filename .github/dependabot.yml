@@ -11,81 +11,31 @@ updates:
     commit-message:
       prefix: "ci"
 
-  # Uncomment the ecosystems used in your project:
+  # npm (Frontend)
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
+    groups:
+      development:
+        dependency-type: "development"
+      production:
+        dependency-type: "production"
 
-  # npm/yarn/pnpm (Node.js)
-  # - package-ecosystem: "npm"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-  #   groups:
-  #     development:
-  #       dependency-type: "development"
-  #     production:
-  #       dependency-type: "production"
-
-  # pip (Python)
-  # - package-ecosystem: "pip"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-
-  # Go modules
-  # - package-ecosystem: "gomod"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-
-  # Cargo (Rust)
-  # - package-ecosystem: "cargo"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-
-  # Maven (Java)
-  # - package-ecosystem: "maven"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-
-  # Gradle (Java/Kotlin)
-  # - package-ecosystem: "gradle"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-
-  # NuGet (.NET)
-  # - package-ecosystem: "nuget"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
+  # pip (Backend)
+  - package-ecosystem: "pip"
+    directory: "/backend"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"
 
   # Docker
-  # - package-ecosystem: "docker"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
-
-  # Terraform
-  # - package-ecosystem: "terraform"
-  #   directory: "/"
-  #   schedule:
-  #     interval: "weekly"
-  #   commit-message:
-  #     prefix: "deps"
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "deps"

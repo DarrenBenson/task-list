@@ -213,21 +213,6 @@ None - this is the foundation story.
 
 None.
 
-## Quality Checklist
-
-### All Stories
-
-- [x] No ambiguous language
-- [x] Open Questions: 0/0 resolved
-- [x] Given/When/Then uses concrete values
-- [x] Persona referenced with specific context
-
-### Ready Status Gate
-
-- [x] All critical Open Questions resolved
-- [x] No "TBD" placeholders in acceptance criteria
-- [x] Error scenarios documented
-
 ## Revision History
 
 | Date | Author | Change |
